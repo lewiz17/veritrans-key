@@ -44,7 +44,7 @@ app.post('/api/vtkey', async (req, res) => {
           "Content-Type": "application/json; charset=utf-8",
           Authorization: "Basic MjI3ZDVkZmYtYzA5Yy00NzE4LTg3ZTMtYmJiNTI0NzAwZDQ4Og=="
         },
-        data: data,
+        data: JSON.stringify(data),
     };
 
     try {
