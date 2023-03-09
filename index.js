@@ -23,10 +23,6 @@ app.post('/api/vtkey', async (req, res) => {
 
     const order = req.body.order_id;
     const amountTotal = req.body.amount;
-
-    const generateOrderId = () => {
-        return `ORDER-${uuid.v4()}`;
-    };
     
     const data = {
         order_id: order,
@@ -34,7 +30,7 @@ app.post('/api/vtkey', async (req, res) => {
         shipping_amount: 0,
         dummy: true,
         payment_key_expiry_duration: 1440,
-        enabled_payment_types: ["card"],
+        enabled_payment_types: ["card"]
     };
 
     const config = {
@@ -44,7 +40,7 @@ app.post('/api/vtkey', async (req, res) => {
           "Content-Type": "application/json; charset=utf-8",
           Authorization: "Basic MjI3ZDVkZmYtYzA5Yy00NzE4LTg3ZTMtYmJiNTI0NzAwZDQ4Og=="
         },
-        data: JSON.stringify(data),
+        data: JSON.stringify(data)
     };
 
     try {
