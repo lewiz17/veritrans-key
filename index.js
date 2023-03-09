@@ -21,6 +21,7 @@ const port = 3001;
 /** Endpoint for payment key veritrans generate */
 app.post('/api/vtkey', async (req, res) => {
 
+    const order = req.body.order_id;
     const amountTotal = req.body.amount;
 
     const generateOrderId = () => {
@@ -28,7 +29,7 @@ app.post('/api/vtkey', async (req, res) => {
     };
     
     const data = {
-        order_id: generateOrderId(),
+        order_id: order,
         gross_amount: amountTotal,
         shipping_amount: 0,
         dummy: true,
