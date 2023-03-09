@@ -55,23 +55,14 @@ app.post('/api/vtkey', async (req, res) => {
 
 app.get('/api/posts', async (req, res) => {
 
-    const config = {
-        method: "get",
-        url: `https://jsonplaceholder.typicode.com/posts`
-    };
-
     try {
-        const response = await axios(config);
-        console.log(response);
-        res.status(200).send(response);
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
+        res.status(200).json({ data: response.data });
     } catch (error) {
         console.error(error);
         res.status(500).send(error);
     }
 });
-
-
-
 
 app.listen(port, () => {
   console.log(`app is listening at http://localhost:${port}`);
