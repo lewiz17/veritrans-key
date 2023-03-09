@@ -19,7 +19,7 @@ app.use(cors());
 const port = 3001;
 
 /** Endpoint for payment key veritrans generate */
-app.post('/api/vtkey', async (req, res) => {
+app.post('/api/key', async (req, res) => {
 
     const order = req.body.order_id;
     const amountTotal = req.body.amount;
@@ -45,8 +45,7 @@ app.post('/api/vtkey', async (req, res) => {
 
     try {
         const response = await axios(config);
-        console.log(response);
-        res.status(200).send(response);
+        res.status(200).json({ data: response.data });
     } catch (error) {
         console.error(error);
         res.status(500).send(error);
