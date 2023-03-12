@@ -23,7 +23,6 @@ app.post('/api/key', async (req, res) => {
 
     const order = req.body.order_id;
     const amountTotal = req.body.amount;
-    const gid = req.body.gid;
     
     const data = {
         order_id: order,
