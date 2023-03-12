@@ -23,6 +23,8 @@ app.post('/api/key', async (req, res) => {
 
     const order = req.body.order_id;
     const amountTotal = req.body.amount;
+    const name = req.body.name;
+    const email = req.body.email;
     
     const data = {
         order_id: order,
@@ -30,7 +32,11 @@ app.post('/api/key', async (req, res) => {
         shipping_amount: 0,
         dummy: true,
         payment_key_expiry_duration: 1440,
-        enabled_payment_types: ["card"]
+        enabled_payment_types: ["card"],
+        email: {
+          customer_name: name,
+          customer_email_address: email
+        }
     };
 
     const config = {
