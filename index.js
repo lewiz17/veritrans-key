@@ -23,6 +23,7 @@ app.post('/api/key', async (req, res) => {
 
     const order = req.body.order_id;
     const amountTotal = req.body.amount;
+    const gid = req.body.gid;
     
     const data = {
         order_id: order,
@@ -30,7 +31,9 @@ app.post('/api/key', async (req, res) => {
         shipping_amount: 0,
         dummy: true,
         payment_key_expiry_duration: 1440,
-        enabled_payment_types: ["card"]
+        enabled_payment_types: ["card"],
+        success_url: `https://localhost:3000/veritrans-payment?status=sucess&gid=${gid}`,
+        failure_url: `https://localhost:3000/veritrans-payment?status=fail&gid=${gid}`
     };
 
     const config = {
@@ -45,17 +48,6 @@ app.post('/api/key', async (req, res) => {
 
     try {
         const response = await axios(config);
-        res.status(200).json({ data: response.data });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send(error);
-    }
-});
-
-app.get('/api/posts', async (req, res) => {
-
-    try {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
         res.status(200).json({ data: response.data });
     } catch (error) {
         console.error(error);
