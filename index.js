@@ -31,9 +31,7 @@ app.post('/api/key', async (req, res) => {
         shipping_amount: 0,
         dummy: true,
         payment_key_expiry_duration: 1440,
-        enabled_payment_types: ["card"],
-        success_url: `https://localhost:3000/veritrans-payment?status=sucess&gid=${gid}`,
-        failure_url: `https://localhost:3000/veritrans-payment?status=fail&gid=${gid}`
+        enabled_payment_types: ["card"]
     };
 
     const config = {
